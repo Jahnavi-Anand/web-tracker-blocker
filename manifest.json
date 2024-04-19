@@ -1,0 +1,70 @@
+{
+    "manifest_version": 3,
+    "name": "Web Tracker Blocker",
+    "version": "1.0",
+    "description": "A Chrome extension to block web trackers and protect user privacy.",
+    "permissions": [
+      "activeTab",
+      "webRequest",
+      "webRequestBlocking",
+      "storage",
+      "tabs",
+      "webNavigation",
+      "http://*/*",
+      "https://*/*"
+    ],
+    "icons": {
+      "16": "icon.jpeg",
+      "48": "icon.jpeg",
+      "128": "icon.jpeg"
+    },
+    "action": {
+      "default_popup": "popup.html",
+      "default_icon": {
+        "16": "icon.jpeg",
+        "48": "icon.jpeg",
+        "128": "icon.jpeg"
+      }
+    },
+    "background": {
+      "service_worker": "background.js"
+    },
+    "options_ui": {
+      "page": "options.html",
+      "chrome_style": true
+    },
+    "content_scripts": [
+      {
+        "matches": ["<all_urls>"],
+        "js": ["content.js"]
+      }
+    ],
+    "web_accessible_resources": [
+      "images/*"
+    ],
+    "content_security_policy": {
+      "extension_pages": "script-src 'self'; object-src 'self'"
+    },
+    "devtools_page": "devtools.html",
+    "browser_action": {
+      "default_popup": "popup.html",
+      "default_icon": "icon.png"
+    },
+    "options_page": "options.html",
+    "commands": {
+      "_execute_browser_action": {
+        "suggested_key": {
+          "default": "Ctrl+Shift+E"
+        }
+      }
+    },
+    "externally_connectable": {
+      "matches": ["*://*.example.com/*"]
+    },
+    "version_name": "1.0",
+    "author": "Your Name",
+    "homepage_url": "https://your-website.com",
+    "default_locale": "en",
+    "update_url": "https://your-website.com/update.json"
+  }
+  
